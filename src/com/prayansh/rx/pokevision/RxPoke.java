@@ -17,20 +17,20 @@ public class RxPoke {
     private static final double LAT = 19.0291;
     private static final double LON = 72.8775;
 
-    public static void main(String[] args) {
+    public static Observable<PokeData.Pokemon> pokeData(double lat, double lon) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(PokeVisionService.SERVICE_ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         final PokeVisionService service = retrofit.create(PokeVisionService.class);
-        Observable<Response<PokeScan>> requestStream = service.getScan(LAT, LON);
-        Observable<String> jobIdStream = requestStream
+
+        Observable<Response<PokeScan>> requestStream = service.getScan(lat, lon);
+        return requestStream
                 .filter(response -> (response.isSuccessful()
                         && response.body().getStatus().equals("success")))
                 .map(Response::body)
-                .map(PokeScan::getJobId);
-        Observable<Response<PokeData>> dataStream = jobIdStream
+                .map(PokeScan::getJobId)
                 .flatMap(jobId -> {
                     try {
                         Thread.sleep(5000);
@@ -38,9 +38,11 @@ public class RxPoke {
                         e.printStackTrace();
                     }
                     return service.getNearbyData(LAT, LON, jobId);
-                });
-        dataStream.flatMap(pokeDataResponse -> Observable.from(pokeDataResponse.body().getPokemon()))
-                .map(RxPoke::prettyPrint);
+                }).flatMap(pokeDataResponse -> Observable.from(pokeDataResponse.body().getPokemon()));
+    }
+
+    public static Observable<String> pokeStringData(double lat, double lon) {
+        return pokeData(lat, lon).map(RxPoke::prettyPrint);
     }
 
     private static String prettyPrint(PokeData.Pokemon pokemon) {
