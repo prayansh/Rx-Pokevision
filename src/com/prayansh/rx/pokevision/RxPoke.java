@@ -14,9 +14,6 @@ import java.io.FileNotFoundException;
  * Created by Prayansh on 2016-07-25.
  */
 public class RxPoke {
-    private static final double LAT = 19.0291;
-    private static final double LON = 72.8775;
-
     public static Observable<PokeData.Pokemon> pokeData(double lat, double lon) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(PokeVisionService.SERVICE_ENDPOINT)
@@ -37,7 +34,7 @@ public class RxPoke {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    return service.getNearbyData(LAT, LON, jobId);
+                    return service.getNearbyData(lat, lon, jobId);
                 }).flatMap(pokeDataResponse -> Observable.from(pokeDataResponse.body().getPokemon()));
     }
 
