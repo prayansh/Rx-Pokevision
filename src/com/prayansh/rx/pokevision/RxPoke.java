@@ -1,7 +1,10 @@
 package com.prayansh.rx.pokevision;
 
+import com.prayansh.rx.pokevision.helpers.PokeVisionService;
+import com.prayansh.rx.pokevision.helpers.Utils;
 import com.prayansh.rx.pokevision.models.PokeData;
 import com.prayansh.rx.pokevision.models.PokeScan;
+import com.prayansh.rx.pokevision.models.Pokedex;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -45,9 +48,9 @@ public class RxPoke {
     private static String prettyPrint(PokeData.Pokemon pokemon) {
         String result = "";
         try {
-            result += Pokedex.getPokedex().pokemonById(pokemon.getId());
+            result += Pokedex.getPokedex().pokemonById(pokemon.getPokemonId());
         } catch (FileNotFoundException e) {
-            result += pokemon.getId();
+            result += pokemon.getPokemonId();
         }
         result += "@" + pokemon.getLatitude() + "," + pokemon.getLongitude() + " available for " + Utils.printTime(Utils
                 .getTimeTillExpiration

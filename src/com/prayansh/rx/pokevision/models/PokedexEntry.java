@@ -1,11 +1,16 @@
-package com.prayansh.rx.pokevision;
+package com.prayansh.rx.pokevision.models;
 
 /**
  * Created by Prayansh on 2016-07-27.
  */
-public class Pokemon {
+public class PokedexEntry {
     private int id;
     private String name;
+
+    public PokedexEntry(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public int getId() {
         return id;

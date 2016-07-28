@@ -1,4 +1,4 @@
-package com.prayansh.rx.pokevision;
+package com.prayansh.rx.pokevision.helpers;
 
 import com.prayansh.rx.pokevision.models.PokeData;
 import com.prayansh.rx.pokevision.models.PokeScan;

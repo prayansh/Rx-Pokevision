@@ -1,4 +1,4 @@
-package com.prayansh.rx.pokevision;
+package com.prayansh.rx.pokevision.helpers;
 
 import java.util.HashMap;
 import java.util.Map;

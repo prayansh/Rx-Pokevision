@@ -19,6 +19,9 @@ Observable<String> RxPoke.pokeStringData(double lat, double lon);
     private Boolean isAlive;
 ```
 
+## Future Plans
+Android application coming soon
+
 ## Dependencies
 - io.reactivex:rxjava:1.1.7
 - com.squareup.retrofit2:retrofit:2.1.0

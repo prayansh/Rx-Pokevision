@@ -1,4 +1,4 @@
-package com.prayansh.rx.pokevision;
+package com.prayansh.rx.pokevision.models;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -11,7 +11,7 @@ import java.io.FileReader;
  */
 public class Pokedex {
     private static Pokedex instance;
-    private static Pokemon[] pokedex;
+    private static PokedexEntry[] pokedex;
     private static final String POKEDEX_PATH = "res/pokedex.json";
 
     private Pokedex() throws FileNotFoundException {
@@ -24,12 +24,12 @@ public class Pokedex {
         return instance;
     }
 
-    public Pokemon pokemonById(int id) {
+    public PokedexEntry pokemonById(int id) {
         return pokedex[id];
     }
 
     private static void generatePokedex() throws FileNotFoundException {
         JsonReader reader = new JsonReader(new FileReader(POKEDEX_PATH));
-        pokedex = new GsonBuilder().create().fromJson(reader, Pokemon[].class);
+        pokedex = new GsonBuilder().create().fromJson(reader, PokedexEntry[].class);
     }
 }

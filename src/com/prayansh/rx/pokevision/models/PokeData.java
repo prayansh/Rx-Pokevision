@@ -142,7 +142,7 @@ public class PokeData {
 
         @Override
         public String toString() {
-            return "Pokemon{" +
+            return "{" +
                     "id=" + id +
                     ", expiration_time=" + expiration_time +
                     ", pokemonId=" + pokemonId +
