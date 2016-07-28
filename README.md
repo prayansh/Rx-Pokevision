@@ -1,4 +1,4 @@
-RxPoke
+Rx-Pokevision
 ------
 A Pokemon Api which leverages the PokeVision API to get a list of Pokemon near you.
 
