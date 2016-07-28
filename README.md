@@ -9,7 +9,7 @@ Observable<PokeData.Pokemon> RxPoke.pokeData(double lat, double lon);
 Observable<String> RxPoke.pokeStringData(double lat, double lon);
 ```
 
-``` Pokemon.class ``` has the following fields
+``` Pokemon ``` has the following fields
 ```java
     private Integer id;
     private Integer expiration_time;
@@ -20,10 +20,10 @@ Observable<String> RxPoke.pokeStringData(double lat, double lon);
 ```
 
 ## Dependencies
- io.reactivex:rxjava:1.1.7
- com.squareup.retrofit2:retrofit:2.1.0
- com.squareup.retrofit2:converter-gson:2.1.0
- com.squareup.retrofit2:adapter-rxjava:2.1.0
+- io.reactivex:rxjava:1.1.7
+- com.squareup.retrofit2:retrofit:2.1.0
+- com.squareup.retrofit2:converter-gson:2.1.0
+- com.squareup.retrofit2:adapter-rxjava:2.1.0
 
 ## Acknowledgements
 [PokeVision](https://pokevision.com/)
